@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <head th:replace="layout/layout :: head"> </head>
+    <title>Ach Recibidas</title>
+</head>
+
+<body>
+
+<header th:replace="layout/layout :: header"></header>
+
+<div class="container col-md-6">
+    <div class="card">
+        <div class="card-header">
+            <h3>Consulta de Transacciones ACH Recibidas</h3>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <form th:action="@{/listarecibidas}" th:objet="${ach}" method="post">
+            <div class="form-group">
+                <div class="form-group">
+                    <label>Ingrese Fecha Inicial</label>
+                    <input type="date" th:field="${achRecibida.fechainicio}" th:value="${achRecibida.fechainicio}"
+                           class="form-control">
+                    <small class="form-text text-danger" th:if="${#fields.hasErrors('achRecibida.fechainicio')}"
+                           th:errors="*{achRecibida.fechainicio}"></small>
+
+                    <label>Ingrese Fecha Final</label>
+                    <input type="date" th:field="${achRecibida.fechafin}" th:value="${achRecibida.fechafin}"
+                           class="form-control">
+                    <small class="form-text text-danger"  th:if="${#fields.hasErrors('achRecibida.fechafin')}"
+                           th:errors="*{achRecibida.fechafin}"  ></small>
+
+
+                    <label>Ingrese No. Cuenta</label>
+                    <input type="text" th:field="${achRecibida.cuenta}" th:value="${achRecibida.cuenta}"
+                           class="form-control">
+                    <small class="form-text text-danger" th:if="${#fields.hasErrors('achRecibida.cuenta')}"
+                           th:errors="*{achRecibida.cuenta}"></small>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Consultar</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<footer th:replace="layout/layout :: footer"></footer>
+
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head th:replace="layout/layout :: head"></head>
+    <title>Lista Recibidas</title>
+</head>
+<body>
+
+<header th:replace="layout/layout :: header"></header>
+
+<div class="container">
+    <div class="row" id="margen">
+        <div class="col-10" th:align="center">
+            <h5>Listado de Transacciones Entrantes ACH</h5>
+        </div>
+        <div class="col-2">
+            <button id="exporttable" class="btn btn-primary" onclick="exportTableToExcel('tblData')">Descargar</button>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="card bg-light">
+
+        <div class="card-body">
+
+            <table class="table table-responsive table-hover table-condensed table-sm" id="tblData">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Fecha</th>
+                    <th>Monto</th>
+                    <th>Moneda</th>
+                    <th>Cuenta CHN</th>
+                    <th>Nombre</th>
+                    <th>Informacion Adicional</th>
+                    <th>Banco Origen</th>
+                </tr>
+
+                </thead>
+                <tbody>
+                <tr th:each="achList:${listAch}">
+                    <td th:text="${achList.id}"></td>
+                    <td th:text="${#dates.format(achList.fecha,'dd-MM-yyyy')}"></td>
+                    <td th:text="${#numbers.formatDecimal(achList.monto,1,'COMMA',2,'POINT')}"></td>
+                    <td th:text="${achList.moneda}"></td>
+                    <td th:text="${achList.CuentaCHN}"></td>
+                    <td th:text="${achList.Nombre}"></td>
+                    <td th:text="${achList.InformacionAdicional}"></td>
+                    <td th:text="${achList.BancoOrigen}"></td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>
+
+<footer th:replace="layout/layout :: footer"></footer>
+
+</body>
+</html>

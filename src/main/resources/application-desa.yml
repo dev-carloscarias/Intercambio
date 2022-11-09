@@ -1,0 +1,32 @@
+server:
+  port: 8095
+  servlet:
+    context-path: /reportes
+
+# Pass:  AdminAuthAch$22
+# User: usr_authachinterno
+spring:
+  datasource:
+    url: jdbc:sqlserver://172.31.125.10:1433;databaseName=authachinterno
+    username: usr_authachinterno
+    password: AdminAuthAch$22
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    hibernate:
+      ddl-auto: none
+      dialect: org.hibernate.dialect.SQLServer2012Dialect
+      show-sql: true
+
+second:
+  datasource:
+    url: jdbc:sqlserver://172.31.100.235:1433;databaseName=ebanking
+    username: user_ebanking
+    password: ebanking
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+third:
+  datasource:
+    url: jdbc:sqlserver://172.31.125.26:1433;databaseName=gt_integrador
+    username: gt_integrador
+    password: Secure12
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver

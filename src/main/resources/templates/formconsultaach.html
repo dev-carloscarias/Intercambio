@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head th:replace="layout/layout :: head"></head>
+    <title>Consulta</title>
+</head>
+
+<body>
+
+<header th:fragment="header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href=""></a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+
+<div  class="container col-md-6">
+    <div class="card">
+        <div class="card-header">
+            <h3>Consulta de Transacciones ACH</h3>
+        </div>
+    </div>
+    <div class="card-body">
+        <form th:action="@{/transacciones}" th:objet="${consultaAch}" method="post">
+
+            <div class="form-group">
+
+
+                <div class="form-group">
+                    <label>Fecha Inicio</label>
+                    <input type="date" th:field="${consultaAch.fechainicio}" th:value="${consultaAch.fechainicio}"  class="form-control">
+                    <small class="form-text text-danger" th:if="${#fields.hasErrors('consultaAch.fechainicio')}" th:errors="*{consultaAch.fechainicio}"></small>
+                </div>
+
+            </div>
+
+            <button class="btn btn-primary" type="submit">Consultar</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Ach Enviadas</title>
+        <head th:replace="layout/layout :: head">
+    </head>
+
+<body>
+
+    <header th:replace="layout/layout :: header"></header>
+<div class="container">
+
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <table class="table table-bordered table-striped mb-0">
+            <thead>
+            <tr>
+                <th>Estado Transaccion</th>
+                <th>Cantidad</th>
+
+            </tr>
+            </thead>
+            <tbody>
+
+            <div th:if="${transaccionesach!=null}" >
+            <tr th:each="transaccionesach:${transaccionesach}">
+                <td th:text="${transaccionesach.estadotransaccion}"></td>
+                <td th:text="${transaccionesach.Total}"></td>
+            </tr>
+
+            </div >
+
+            <div th:unless="${transaccionesach!=null}">
+                <tr>
+                    <td>No Existen Datos</td>
+
+                </tr>
+            </div>
+
+
+
+            </tbody>
+
+        </table>
+
+    </div>
+</div>
+
+<script src="/static/js/js.js"></script>
+<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+
+
+</body>
+</html>

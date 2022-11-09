@@ -1,0 +1,35 @@
+server:
+  port: 8095
+  servlet:
+    context-path: /reportes
+
+spring:
+  datasource:
+    url: jdbc:sqlserver://172.31.100.212:1433;databaseName=authachinterno
+    username: usr_authachinterno
+    password: ENC(7qfXM1ZMElHae9pcLaP3Ghtp8wIX009J)
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    hibernate:
+      ddl-auto: none
+      dialect: org.hibernate.dialect.SQLServer2012Dialect
+      show-sql: true
+
+
+second:
+  datasource:
+    url: jdbc:sqlserver://172.31.100.13:1433;databaseName=ebanking
+    username: user_ebanking
+    password: ENC(+3UlhKTeYzG4WEEeBDDuWjWTZxkPT6tJ)
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+third:
+  datasource:
+    url: jdbc:sqlserver://172.31.100.12:1433;databaseName=gt_integrador
+    username: gt_integrador
+    password: Secure12
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+logging:
+  file:
+    name: /aplicacionach/applicationlog.log

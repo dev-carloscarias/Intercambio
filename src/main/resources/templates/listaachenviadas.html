@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <head th:replace="layout/layout :: head"></head>
+    <title>Lista Enviadas</title>
+</head>
+<body>
+
+<header th:replace="layout/layout :: header"></header>
+
+<div class="container" id="margen">
+    <div class="row">
+        <div class="col-8" th:align="center">
+            <h5>Listado de Transacciones Enviadas ACH</h5>
+        </div>
+        <div class="col-2">
+            <button id="exporttable" class="btn btn-primary" onclick="exportTableToExcel('tblData')">Descargar</button>
+        </div>
+    </div>
+</div>
+
+
+<div  class="container">
+
+
+        <div class="card-body">
+            <table class="table table-responsive table-hover table-condensed table-sm" id="tblData" >
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Fecha</th>
+                    <th>Cuenta Origen</th>
+                    <th>Monto</th>
+                    <th>Moneda</th>
+                    <th>Cuenta Destino</th>
+                    <th>Nombre</th>
+                    <th>Banco Destino</th>
+                    <th>Descripcion</th>
+
+                </tr>
+
+                </thead>
+                <tbody>
+                <tr th:each="achList:${listAch}">
+                    <td th:text="${achList.id}"></td>
+                    <td th:text="${#dates.format(achList.fecha,'dd-MM-yyyy')}"></td>
+                    <td th:text="${achList.CuentaOrigen}"></td>
+                    <td th:text="${#numbers.formatDecimal(achList.monto,1,'COMMA',2,'POINT')}"></td>
+                    <td th:text="${achList.moneda}"></td>
+                    <td th:text="${achList.CuentaDestino}"></td>
+                    <td th:text="${achList.Nombre}"></td>
+                    <td th:text="${achList.BancoDestino}"></td>
+                    <td th:text="${achList.Descripcion}"></td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+
+</div>
+
+<footer th:replace="layout/layout :: footer"></footer>
+
+
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+
+table{white-space: nowrap;
+
+}
+
+
+#footer {
+    position: fixed;
+    left: 0px;
+    bottom: 0;
+    height: 40px;
+    width: 100%;
+    background-color:  #042660 ;
+    color: white !important;
+}
+
+#margen {
+    padding-top: 5px;
+    border-top-width: 5px;
+    margin-top: 15px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-login {
+    font-size: 0.9rem;
+    letter-spacing: 0.05rem;
+    padding: 0.75rem 1rem;
+    background-color:  #042660 ;
+}
+

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <head th:replace="layout/layout :: head"></head>
+        <title>Registro Usuario</title>
+    </head>
+<body>
+<header th:replace="layout/layout :: header"></header>
+
+<div class="container col-md-6">
+    <div class="card">
+        <div class="card-header">
+            <h3>Registro Usuario</h3>
+        </div>
+    </div>
+
+    <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}">
+    </div>
+
+
+    <div class="card-body">
+        <form th:action="@{/saveuser}" th:objet="${registro}" method="post">
+
+            <div class="form-group">
+                <div class="form-group">
+
+                    <label>Usuario</label>
+                    <input type="text" th:field="${registroUsuario.username}" th:value="${registroUsuario.username}"
+                           class="form-control">
+                    <small class="form-text text-danger" th:if="${#fields.hasErrors('registroUsuario.username')}"
+                           th:errors="*{registroUsuario.username}"></small>
+
+                    <label>Password</label>
+                    <input type="password" th:field="${registroUsuario.password}" th:value="${registroUsuario.password}"
+                           class="form-control">
+                    <small class="form-text text-danger" th:if="${#fields.hasErrors('registroUsuario.password')}"
+                           th:errors="*{registroUsuario.password}"></small>
+
+
+
+                    <label >Rol</label>
+                    <select name="role" class="form-control form-select" >
+                        <option value="ROLE_ADMIN">Admin</option>
+                        <option value="ROLE_CUMPLIMIENTO">Cumplimiento</option>
+                        <option value="ROLE_TESORERIA">Tesorería</option>
+                    </select>
+
+                </div>
+
+            </div>
+
+            <button class="btn btn-primary" type="submit">Registrar</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<footer th:replace="layout/layout :: footer"></footer>
+
+
+</body>
+</html>

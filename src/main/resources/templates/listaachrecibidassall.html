@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <head th:replace="layout/layout :: head"></head>
+    <title>Lista Recibidas</title>
+</head>
+
+<body>
+
+<header th:replace="layout/layout :: header"></header>
+
+<div class="container" id="margen">
+    <div class="row">
+        <div class="col-8" th:align="center">
+            <h5>Listado de Transacciones Enviadas ACH</h5>
+        </div>
+        <div class="col-2">
+            <button id="exporttable" class="btn btn-primary" onclick="exportTableToExcel('tblData')">Descargar</button>
+        </div>
+    </div>
+</div>
+
+
+<div  class="container">
+
+
+        <div class="card-body">
+            <table class="table table-responsive table-hover table-condensed table-sm" id="tblData" >
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Fecha Creacion</th>
+                    <th>Fecha Efectiva</th>
+                    <th>Direccion</th>
+                    <th>Tipo Transaccion</th>
+                    <th>Estatus</th>
+                    <th>Monto</th>
+                    <th>Moneda</th>
+                    <th>Cuenta</th>
+                    <th>Codigo Rechazo</th>
+                    <th>Informacion Adicional</th>
+                    <th>Tipo</th>
+                    <th>Codigo Transaccion</th>
+                </tr>
+
+                </thead>
+                <tbody>
+                <tr th:each="achList:${listAchRecibidas}">
+                    <td th:text="${achList.idItem}"></td>
+                    <td th:text="${#dates.format(achList.FechaCreacion,'dd-MM-yyyy HH:mm:ss')}"></td>
+                    <td th:text="${#dates.format(achList.FechaEfectiva,'dd-MM-yyyy')}"></td>
+                    <td th:text="${achList.direction}"></td>
+                    <td th:text="${achList.TipoTransaccion}"></td>
+                    <td th:text="${achList.status}"></td>
+                    <td th:text="${#numbers.formatDecimal(achList.Monto,1,'COMMA',2,'POINT')}"></td>
+                    <td th:text="${achList.Moneda}"></td>
+                    <td th:text="${achList.Cuenta}"></td>
+                    <td th:text="${achList.CodigoRechazo}"></td>
+                    <td th:text="${achList.InformacionAdicional}"></td>
+                    <td th:text="${achList.tipo}"></td>
+                    <td th:text="${achList.CodigoTransaccion}"></td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+</div>
+
+
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

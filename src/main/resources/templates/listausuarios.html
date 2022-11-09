@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <head th:replace="layout/layout :: head"> </head>
+    <title>Lista Usuarios</title>
+</head>
+
+
+<body>
+
+<header th:replace="layout/layout :: header"></header>
+
+<div class="container" id="margen">
+<div class="row">
+    <div class="col-8" th:align="center">
+        <h5>Listado de Usuarios</h5>
+    </div>
+</div>
+</div>
+
+<div  class="container col-md-6">
+    <div class="card">
+        <div class="card-header">
+            <a th:type="button" th:href="@{/registrarusuario}" class="btn btn-outline-primary btn-sm"> <span>Nuevo Usuario</span>  </a>
+        </div>
+
+    </div>
+
+    <div class="card-body">
+        <table class="table table-responsive  table-bordered table-sm"  >
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Usuario</th>
+                <th>Rol</th>
+                <th>Estatus</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="usuario:${usuarios}">
+                <td th:text="${usuario.id}"></td>
+                <td th:text="${usuario.username}"></td>
+                <td  th:text="${usuario.roles.get(0).getAuthority()}"></td>
+                <td th:if="${usuario.enabled}"  th:text="Activo"></td>
+                <td th:unless="${usuario.enabled}"  th:text="Inactivo"></td>
+                <td  >
+                    <a th:ref="${'/reportes/useredit' + usuario.id}" class="btn btn-outline-success btn-sm">Editar</a>
+                    <a th:ref="${'/reportes/useredit' + usuario.id}" class="btn btn-outline-danger btn-sm">Deshabilitar</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
